@@ -1,0 +1,44 @@
+	1. Regular Expressions:
+		a. re Package
+			i. re.search('Word','String') - checks if the work is at the starting of the string 
+				1) The result gives location and search expression in output. 
+				2) Use re.search().group() to get the word in output
+			ii. Re.match() 
+				1) Matches first occurance of word in the string
+			iii. Re.findall()
+				1) MOST USEFUL AND MASTER FUNCTION IN THE re PACKAGE
+				2) Can find all occurrences of work in a string
+				3) Special sequences in findall()
+					1. \A returns a match if the specified pattern is at the beginning of the string. x = re.findall("\AAnalytics", str)
+					2. \b returns a match where the specified pattern is at the beginning or at the end of a word. x = re.findall(r"est\b", str)
+					3. \B returns a match where the specified pattern is present, but NOT at the beginning (or at the end) of a word.  x = re.findall(r"\Ben", str)
+					4. \d returns a match where the string contains digits (numbers from 0-9). x = re.findall("\d", str)
+						i) \d+ will combine the group of numbers
+					5. \D returns a match where the string does not contain any digit. x = re.findall("\D", str)
+						i) \D+ groups the non numeric values in output
+					6. \w helps in extraction of alphanumeric characters only (characters from a to Z, digits from 0-9, and the underscore _ character). x = re.findall("\w",str)
+						i) \w+ groups the alphanumeric values 
+					7. \W returns match at every non alphanumeric character. x = re.findall("\W", str)
+						i) \W+
+				4) Metacharacters: Addition to the special sequences to derive meaningful insights out of the string
+					1. (.) matches any character (except newline character). 
+					x = re.findall("ro.", str)
+					x2 = re.findall("ro...", str)
+					2. (^) starts with. x = re.findall("^Data", str)
+					3. ($) ends with
+					4. (*) matches for zero or more occurences of the pattern to the left of it. x = re.findall("eas*y", str) --> Gives output easy eay easssssssy 
+					5. (+) matches for one or more occurences of the pattern to the left of it. x = re.findall("eas+y", str) --> Gives output easy easssssssy
+					6. (?) matches zero or one occurrence of the pattern left to it.  x = re.findall("eas+y", str) --> Gives output easy eay
+					7. (|) either or. x = re.findall("data|India", str)
+				5) Sets: bunch of characters inside a [] with special meaning
+					1.  re.findall("[ydh]", str) finds all occurances of y,d,h and outputs as a list
+					2. x = re.findall("[a-g]", str) finds all occurances of a to g
+					3. x = re.findall(r"/b[0-4]\d+", str) groups all strings starting with number and groups the numbers into a list output
+					4. [^] Check whether string has other characters mentioned after ^. 
+					5. [a-zA-Z0-9] : Check whether string has alphanumeric character
+					6. # extract words that start with a special character
+					x = re.findall("[^a-zA-Z0-9 ]\W+", str)
+          
+          TO USE REGULAR EXPRESSIONS IN DATA COLUMN, CREATE A FUNCTION AND USE IT ON COLUMN WITH APPLY AND A LAMBDA FUNCTION
+          
+          
